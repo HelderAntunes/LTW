@@ -4,12 +4,11 @@ DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS replies;
 
 CREATE TABLE users (
-    email VARCHAR PRIMARY KEY,
-    username VARCHAR,
+    username VARCHAR PRIMARY KEY,
     password VARCHAR,
+    email VARCHAR,
     birthdate DATE,
     isOwner INTEGER /* 1 if he is owner, 0 if he is reviewer */
-    /* how to save images ? */
 );
 
 
@@ -19,7 +18,6 @@ CREATE TABLE restaurants (
     description VARCHAR,
     local VARCHAR,
     owner_email VARCHAR REFERENCES users
-    /* how to save images ? */
 );
 
 CREATE TABLE reviews (
@@ -38,4 +36,5 @@ CREATE TABLE replies (
     review_id INTEGER REFERENCES reviews
 );
 
-/* TODO: add inserts for default owner and reviewer (test purpose) */
+/* SHA1 function online generator -> http://www.sha1-online.com */
+INSERT INTO users VALUES ('bolacha', '4d3f90019cd763878ac59bc563f04cfae0be9b68', NULL, NULL, NULL); /* password = 'bolacha' */
