@@ -9,9 +9,8 @@ body {
 /* Title */
 h1 {
     text-align: center;
-
-
 }
+
 /* Bordered form */
 form {
     border: 5px solid blue;

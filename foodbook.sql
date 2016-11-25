@@ -8,7 +8,7 @@ CREATE TABLE users (
     password VARCHAR,
     email VARCHAR,
     birthdate DATE,
-    isOwner INTEGER /* 1 if he is owner, 0 if he is reviewer */
+    user_type VARCHAR
 );
 
 
@@ -17,7 +17,7 @@ CREATE TABLE restaurants (
     name VARCHAR,
     description VARCHAR,
     local VARCHAR,
-    owner_email VARCHAR REFERENCES users
+    owner_username VARCHAR REFERENCES users
 );
 
 CREATE TABLE reviews (
@@ -26,7 +26,7 @@ CREATE TABLE reviews (
     comment VARCHAR,
     date_review DATE,
     restaurant_id INTEGER REFERENCES restaurants,
-    reviewer_email INTEGER REFERENCES users
+    reviewer_username VARCHAR REFERENCES users
 );
 
 CREATE TABLE replies (

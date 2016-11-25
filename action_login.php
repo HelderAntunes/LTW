@@ -3,8 +3,11 @@
   include_once('database/connection.php');
   include_once('database/users.php');
 
-  if (username_password_exists($_POST['username'], $_POST['password'])) { // test if user exists
+  if (username_password_exists($_POST['username'], $_POST['password'])) {
       $_SESSION['username'] = $_POST['username'];
+      echo 'sucessful log in.';
+  } else {
+      echo 'ups';
   }
-  header('Location: test_login.php');
+
 ?>
