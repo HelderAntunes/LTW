@@ -11,7 +11,6 @@ CREATE TABLE users (
     user_type VARCHAR
 );
 
-
 CREATE TABLE restaurants (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR,
@@ -37,4 +36,5 @@ CREATE TABLE replies (
 );
 
 /* SHA1 function online generator -> http://www.sha1-online.com */
-INSERT INTO users VALUES ('bolacha', '4d3f90019cd763878ac59bc563f04cfae0be9b68', NULL, NULL, NULL); /* password = 'bolacha' */
+INSERT INTO users VALUES ('bolacha', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "bolacha@hotmail.com", "1990-09-02", 'owner'); /* password = 'bolacha' */
+INSERT INTO users VALUES ('biscoito', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "biscoito@hotmail.com", "1990-09-06", 'reviewer'); /* password = 'bolacha' */

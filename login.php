@@ -1,7 +1,5 @@
 <?php
-include_once("/config/config.php");
-// Keep in mind this path is relative to current file, so if you are 3 sub-folder keep
-// include_once(dirname(__FILE__)."/../../../config.php")
+    include_once("config/config.php");
 ?>
 
 <!DOCTYPE html>

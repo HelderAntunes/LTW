@@ -63,5 +63,19 @@
 		}
     }
 
+    /**
+     * Get a user.
+     */
+    function get_user($username) {
+        global $dbh;
+        try {
+			$stmt = $dbh->prepare('SELECT * FROM users WHERE username = ?');
+			$stmt->execute(array($username));
+            $result = $stmt->fetch();
+            return $result;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+    }
 
 ?>
