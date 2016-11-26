@@ -7,7 +7,7 @@
       $_SESSION['username'] = $_POST['username'];
 
       $result = get_user($_POST['username']);
-      
+
       if ($result['user_type'] === "owner") {
           echo 'owner page';
           header('Location: ownerpage.php?username='.$_POST['username']);

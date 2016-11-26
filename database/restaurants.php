@@ -16,4 +16,25 @@
 		}
     }
 
+    /**
+     * Add a restaurant to database.
+     */
+    function add_restaurant($name, $description, $local, $owner_username) {
+        global $dbh;
+
+        try {
+            $stmt = $dbh->prepare("INSERT INTO restaurants (id, name, description, local, owner_username)
+                                    VALUES (NULL, :name, :description, :local, :owner_username)");
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':local', $local);
+            $stmt->bindParam(':owner_username', $owner_username);
+
+            $stmt->execute();
+
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+    }
+
 ?>

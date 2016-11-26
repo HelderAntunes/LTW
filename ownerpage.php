@@ -4,8 +4,12 @@
     include_once('database/connection.php');
     include_once('database/restaurants.php');
     include_once('database/users.php');
-    $user = get_user($_GET['username']);
-    $restaurants = get_user_restaurants($_GET['username']);
+
+    if(!isset($_SESSION['username'])) // Prevent back button after logout
+        header("Location: login.php");
+
+    $user = get_user($_SESSION['username']);
+    $restaurants = get_user_restaurants($_SESSION['username']);
 ?>
 
 <!DOCTYPE html>
@@ -34,15 +38,15 @@
         <h2>Your restaurants</h2>
         <section id="restaurants">
             <?php foreach ($restaurants as $restaurant) { ?>
-                <article>
-                    <h3><?=$restaurant['name']?></h3>
-                    <p><?=$restaurant['description']?></p>
-                    <p><?=$restaurant['local']?></p>
+                <article class="restaurant">
+                    <h3>Name: <?=$restaurant['name']?></h3>
+                    <p>Description: <?=$restaurant['description']?></p>
+                    <p>Local: <?=$restaurant['local']?></p>
                     <a href="">Edit</a>
                 </article>
             <?php } ?>
         </section>
-        <a href="">Add restaurant</a>
+        <a href="<?=$environment?>/add_restaurant.php?username=<?=$user['username']?>">Add restaurant</a>
 
     </body>
 </html>
