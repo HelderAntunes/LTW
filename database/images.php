@@ -19,4 +19,20 @@
 		}
     }
 
+    /**
+     * Get images of a restaurant.
+     */
+    function get_images_of_restaurant($restaurant_id) {
+        global $dbh;
+
+        try {
+            $stmt = $dbh->prepare('SELECT * FROM images WHERE restaurant_id = ?');
+            $stmt->execute(array($restaurant_id));
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
 ?>

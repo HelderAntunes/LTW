@@ -13,7 +13,7 @@
             <img src="images/chef.jpg" alt="Chef">
         </div>
 
-        <form action="action_save_restaurant.php" method="post" enctype="multipart/form-data">
+        <form action="action_add_restaurant.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="owner_username" value="<?=$_GET['username']?>">
             <label>Name:
                 <input type="text" placeholder="Enter the name of restaurant" name="name" required>
