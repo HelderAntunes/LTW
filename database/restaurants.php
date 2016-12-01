@@ -58,7 +58,7 @@
     }
 
     /**
-     * Get restaurants with an given id.
+     * Get restaurant with an given id.
      */
     function get_restaurant($id) {
         global $dbh;
@@ -67,6 +67,23 @@
 			$stmt = $dbh->prepare('SELECT * FROM restaurants WHERE id = ?');
 			$stmt->execute(array($id));
             $result = $stmt->fetch();
+            return $result;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+    }
+
+    /**
+     * Search the restaurants with name = "*$name*".
+     */
+    function search_restaurants($name) {
+        global $dbh;
+
+        try {
+			$stmt = $dbh->prepare('SELECT * FROM restaurants WHERE name LIKE ?');
+			//$stmt->execute(array('%$name%'));
+			$stmt->execute(array('%'.$name.'%'));
+            $result = $stmt->fetchAll();
             return $result;
 		} catch (PDOException $e) {
 			echo $e->getMessage();
