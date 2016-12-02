@@ -5,8 +5,10 @@
     include_once('database/images.php');
 
     add_restaurant($_POST['name'], $_POST['description'], $_POST['local'], $_POST['owner_username']);
-
     $restaurant_id = $dbh->lastInsertId();
+    add_owner_to_restaurant($restaurant_id, $_POST['owner_username']);
+
+
 
     add_image($_POST['name'], $restaurant_id);
 
@@ -41,6 +43,6 @@
     imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
     imagejpeg($medium, $mediumFileName);
 
-    header("Location: ownerpage.php?username=".$_POST['name']);
+    header("Location: userpage.php?username=".$_POST['owner_username']);
 
 ?>

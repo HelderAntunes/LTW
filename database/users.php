@@ -44,17 +44,16 @@
     /**
      * Add a user to database.
      */
-    function add_user($username, $password, $email, $birthdate, $user_type) {
+    function add_user($username, $password, $email, $birthdate) {
         $password =  sha1($password); // hashing
         global $dbh;
         try {
-            $stmt = $dbh->prepare("INSERT INTO users (username, password, email, birthdate, user_type)
-                                    VALUES (:username, :password, :email, :birthdate, :user_type)");
+            $stmt = $dbh->prepare("INSERT INTO users (username, password, email, birthdate)
+                                    VALUES (:username, :password, :email, :birthdate)");
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':birthdate', $birthdate);
-            $stmt->bindParam(':user_type', $user_type);
 
             $stmt->execute();
 

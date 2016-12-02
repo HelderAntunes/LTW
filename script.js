@@ -12,7 +12,7 @@ function search_restaurants() {
         type: 'get',
         data: {name: $('#name').val()},
         success: function(response) {
-            $('#restaurants').html(response);
+            $('#restaurants_found').html(response);
         }
     });
 }

@@ -5,21 +5,9 @@
 
   if (username_password_exists($_POST['username'], $_POST['password'])) {
       $_SESSION['username'] = $_POST['username'];
-
-      $result = get_user($_POST['username']);
-
-      if ($result['user_type'] === "owner") {
-          header('Location: ownerpage.php?username='.$_POST['username']);
-      }
-      else if ($result['user_type'] === "reviewer") {
-          header('Location: reviewerpage.php?username='.$_POST['username']);
-      }
-      else {
-          echo 'some error!!!';
-      }
-
+      header('Location: userpage.php?username='.$_POST['username']); /// TODO: retirar 'usename' do POST por questões de segurança
   } else {
-      echo 'ups';
+      echo 'ups'; /// TODO: Voltar à página anterior a avisar que a combinação de username e password está errada
   }
 
 ?>

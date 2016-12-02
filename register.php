@@ -24,9 +24,6 @@
             <input type="password" placeholder="Enter Password" name="password" required>
             <label><b>Birthday</b></label>
             <input type="date" name="birthdate">
-            <label><b>User type</b></label>
-            <input type="radio" name="usertype" value="owner" checked="checked">Owner
-            <input type="radio" name="usertype" value="reviewer">Reviewer
             <button type="submit">Create account</button>
         </form>
         <?php

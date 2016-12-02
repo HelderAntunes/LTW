@@ -1,5 +1,4 @@
 <?php
-
     /**
      * Get restaurants of an user.
      */
@@ -7,7 +6,9 @@
         global $dbh;
 
         try {
-			$stmt = $dbh->prepare('SELECT * FROM restaurants WHERE owner_username = ?');
+			$stmt = $dbh->prepare('SELECT id, name, description, local
+                                    FROM restaurants, owners_restaurants
+                                    WHERE owner_username = ? AND restaurant_id = id');
 			$stmt->execute(array($username));
             $result = $stmt->fetchAll();
             return $result;
@@ -19,17 +20,34 @@
     /**
      * Add a restaurant to database.
      */
-    function add_restaurant($name, $description, $local, $owner_username) {
+    function add_restaurant($name, $description, $local) {
         global $dbh;
 
         try {
-            $stmt = $dbh->prepare("INSERT INTO restaurants (id, name, description, local, owner_username)
-                                    VALUES (NULL, :name, :description, :local, :owner_username)");
+            $stmt = $dbh->prepare("INSERT INTO restaurants (id, name, description, local)
+                                    VALUES (NULL, :name, :description, :local)");
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':local', $local);
-            $stmt->bindParam(':owner_username', $owner_username);
 
+            $stmt->execute();
+
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+    }
+
+    /**
+     * Add an owner to a restaurant.
+     */
+    function add_owner_to_restaurant($restaurant_id, $owner_username) {
+        global $dbh;
+
+        try {
+            $stmt = $dbh->prepare("INSERT INTO owners_restaurants (owner_username, restaurant_id)
+                                    VALUES (:owner_username, :restaurant_id)");
+            $stmt->bindParam(':owner_username', $owner_username);
+            $stmt->bindParam(':restaurant_id', $restaurant_id);
             $stmt->execute();
 
 		} catch (PDOException $e) {

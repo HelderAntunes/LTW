@@ -2,21 +2,26 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS restaurants;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS replies;
+DROP TABLE IF EXISTS images;
+DROP TABLE IF EXISTS owners_restaurants;
 
 CREATE TABLE users (
     username VARCHAR PRIMARY KEY,
     password VARCHAR,
     email VARCHAR,
-    birthdate DATE,
-    user_type VARCHAR
+    birthdate DATE
 );
 
 CREATE TABLE restaurants (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR,
     description VARCHAR,
-    local VARCHAR,
-    owner_username VARCHAR REFERENCES users
+    local VARCHAR
+);
+
+CREATE TABLE owners_restaurants (
+    owner_username VARCHAR REFERENCES users,
+    restaurant_id INTEGER REFERENCES restaurants
 );
 
 CREATE TABLE reviews (
@@ -42,8 +47,8 @@ CREATE TABLE images (
 );
 
 /* SHA1 function online generator -> http://www.sha1-online.com */
-INSERT INTO users VALUES ('bolacha', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "bolacha@hotmail.com", "1990-09-02", 'owner'); /* password = 'bolacha' */
-INSERT INTO users VALUES ('biscoito', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "biscoito@hotmail.com", "1990-09-06", 'reviewer'); /* password = 'bolacha' */
+INSERT INTO users VALUES ('bolacha', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "bolacha@hotmail.com", "1990-09-02"); /* password = 'bolacha' */
+INSERT INTO users VALUES ('biscoito', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "biscoito@hotmail.com", "1990-09-06"); /* password = 'bolacha' */
 
-INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha', 'Bons almoços e jantares a preços elevados.', 'FEUP-bar das minas', 'bolacha');
-INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha2', 'Má comida, mas bom preço.', 'FEUP-cantina', 'bolacha');
+INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha', 'Bons almoços e jantares a preços elevados.', 'FEUP-bar das minas');
+INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha2', 'Má comida, mas bom preço.', 'FEUP-cantina');
