@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>FoodBook</title>
         <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/register.css">
     </head>
     <body>
         <h1>FoodBook</h1>
@@ -16,11 +16,11 @@
             <img src="images/chef.jpg" alt="Chef">
         </div>
         <form action="action_sigin.php" method="post">
-            <label><b>Username</b></label>
+            <label><b>Username:</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
-            <label><b>Email</b></label>
+            <label><b>Email:</b></label>
             <input type="email" placeholder="Enter your email" name="email" required>
-            <label><b>Password</b></label>
+            <label><b>Password:</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
             <label><b>Birthday</b></label>
             <input type="date" name="birthdate">
