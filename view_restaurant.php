@@ -38,7 +38,7 @@
                     </article>
                 <?php } ?>
             </section>
-            <?php if ($user['user_type'] == 'owner') { ?>
+            <?php if (user_is_owner_of_restaurant($_SESSION['username'], $restaurant['id'])) { ?>
                 <a href="<?=$environment?>/edit_restaurant.php?id=<?=$restaurant['id']?>">Edit restaurant</a>
             <?php } ?>
         </article>

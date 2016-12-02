@@ -56,6 +56,26 @@
     }
 
     /**
+     * Return true the pair <username, restaurant_id> exists in owners_restaurants's table.
+     */
+    function user_is_owner_of_restaurant($username, $restaurant_id) {
+        global $dbh;
+        try {
+			$stmt = $dbh->prepare('SELECT * FROM owners_restaurants WHERE owner_username = ? AND restaurant_id = ?');
+			$stmt->execute(array($username, $restaurant_id));
+            $result = $stmt->fetch();
+            if ($result == true) {
+                return true;
+            } else {
+                return false;
+            }
+
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+    }
+
+    /**
      * Update a restaurant.
      */
     function update_restaurant($id, $name, $description, $local) {
