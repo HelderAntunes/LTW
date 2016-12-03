@@ -43,5 +43,7 @@
             <?php } ?>
         </article>
 
+        <a href="<?=$environment?>/userpage.php?username=<?=$_SESSION['username']?>">Go home</a>
+
     </body>
 </html>

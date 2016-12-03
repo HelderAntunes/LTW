@@ -59,13 +59,11 @@
 
         <a href="<?=$environment?>/add_restaurant.php?username=<?=$user['username']?>">Add restaurant</a>
 
-        <form id="search" method="get">
+        <form id="search" action="restaurants_found.php" method="get">
         	<label for="name">Name</label>
-        	   <input id="name" name="name" placeholder="Type the name of restaurant" />
-        	<button id="buttonsearch" type="button">Search restaurant</button>
+        	   <input name="name" placeholder="Type the name of restaurant" />
+        	<button type="submit">Search restaurant</button>
         </form>
-
-        <section id="restaurants_found"></section>
 
     </body>
 </html>
