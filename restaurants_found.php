@@ -26,14 +26,26 @@
         <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
-        <h1>FoodBook</h1>
 
-        <h2>Username: <?=$user['username']?></h2>
+        <div id="header">
+            <h1>FoodBook</h1>
+        </div>
+
         <div id="imgchef">
             <img src="images/chef.jpg" alt="Chef">
         </div>
-        <h2>Email: <?=$user['email']?></h2>
-        <h2>Birthdate: <?=$user['birthdate']?></h2>
+
+        <div id="user_data">
+            <h2>personal data</h2>
+            <h3>Username: <?=$user['username']?></h2>
+            <h3>Email: <?=$user['email']?></h2>
+            <h3>Birthdate: <?=$user['birthdate']?></h2>
+        </div>
+
+        <div id="user_links">
+            <a href="">Edit profile</a>
+            <a href="<?=$environment?>/action_logout.php">Log out</a>
+        </div>
 
         <section id="restaurants_found">
             <?php if (count($restaurants) > 0) { ?>
