@@ -5,12 +5,10 @@
     include_once('database/restaurants.php');
     include_once('database/users.php');
     include_once('database/images.php');
-    include_once('database/reviews.php');
 
     $user = get_user($_SESSION['username']);
     $restaurant = get_restaurant($_GET['id']);
     $images = get_images_of_restaurant($restaurant['id']);
-    $reviews = get_reviews_of_restaurant($restaurant['id']);
 ?>
 
 <!DOCTYPE html>
@@ -41,30 +39,17 @@
                 <?php } ?>
             </section>
 
-            <section id="reviews">
-                <?php if (count($reviews) > 0) { ?>
-                    <h2>Reviews</h2>
-                    <?php foreach ($reviews as $review) { ?>
-                        <article class="review">
-                            <p>Reviewer: <?=$review['reviewer_username']?></p>
-                            <p>Score: <?=$review['score']?></p>
-                            <?php if (strlen(trim($review['comment'])) > 0) { ?>
-                                <p>Comment: <?=$review['comment']?></p>
-                            <?php } ?>
-                            <!-- <a href="<?=$environment?>/add_review.php?id=<?=$restaurant['id']?>">Add review</a> -->
-                        </article>
-                    <?php } ?>
-                <?php } ?>
-            </section>
-
-            <?php if (user_is_owner_of_restaurant($_SESSION['username'], $restaurant['id'])) { ?>
-                <a href="<?=$environment?>/edit_restaurant.php?id=<?=$restaurant['id']?>">Edit restaurant</a>
-            <?php } else {?>
-                <a href="<?=$environment?>/add_review.php?id=<?=$restaurant['id']?>">Add review</a>
-            <?php } ?>
+            <form id="review_form" action="action_add_review.php" method="post">
+                <input type="hidden" name="restaurant_id" value=<?=$_GET['id']?> >
+                <label>Comment:
+                    <textarea rows="4" cols="50" name="comment"> </textarea>
+                </label>
+                <label>Score:
+                    <input type="number" name="score" value="3" min="1" max="5" step="1">
+                </label>
+                <button type="submit">Submit review</button>
+            </form>
         </article>
-
         <a href="<?=$environment?>/userpage.php?username=<?=$_SESSION['username']?>">Go home</a>
-
     </body>
 </html>

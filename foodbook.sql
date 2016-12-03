@@ -28,7 +28,6 @@ CREATE TABLE reviews (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     score INTEGER,
     comment VARCHAR,
-    date_review DATE,
     restaurant_id INTEGER REFERENCES restaurants,
     reviewer_username VARCHAR REFERENCES users
 );
@@ -36,7 +35,6 @@ CREATE TABLE reviews (
 CREATE TABLE replies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     message VARCHAR,
-    date_reply DATE,
     review_id INTEGER REFERENCES reviews
 );
 

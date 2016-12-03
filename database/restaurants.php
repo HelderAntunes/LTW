@@ -26,12 +26,7 @@
         try {
             $stmt = $dbh->prepare("INSERT INTO restaurants (id, name, description, local)
                                     VALUES (NULL, :name, :description, :local)");
-            $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':description', $description);
-            $stmt->bindParam(':local', $local);
-
-            $stmt->execute();
-
+            $stmt->execute(array($name, $description, $local));
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}
@@ -46,10 +41,7 @@
         try {
             $stmt = $dbh->prepare("INSERT INTO owners_restaurants (owner_username, restaurant_id)
                                     VALUES (:owner_username, :restaurant_id)");
-            $stmt->bindParam(':owner_username', $owner_username);
-            $stmt->bindParam(':restaurant_id', $restaurant_id);
-            $stmt->execute();
-
+            $stmt->execute(array($owner_username, $restaurant_id));
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}
@@ -89,7 +81,6 @@
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':local', $local);
             $stmt->execute();
-
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}
