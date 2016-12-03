@@ -31,4 +31,23 @@
 			echo $e->getMessage();
 		}
     }
+
+    /**
+     * Get a review from database.
+     * @param $id id of review
+     */
+    function get_review($id) {
+        global $dbh;
+
+        try {
+			$stmt = $dbh->prepare('SELECT * FROM reviews
+                                    WHERE id = ?');
+			$stmt->execute(array($id));
+            $result = $stmt->fetch();
+            return $result;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+    }
+    
 ?>

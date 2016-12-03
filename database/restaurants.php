@@ -68,6 +68,24 @@
     }
 
     /**
+     * Get owners's username of a restaurant.
+     */
+    function get_owners_username_of_a_restaurant($restaurant_id) {
+        global $dbh;
+
+        try {
+			$stmt = $dbh->prepare('SELECT username
+                                    FROM users, owners_restaurants
+                                    WHERE owner_username = username AND restaurant_id = ?');
+			$stmt->execute(array($restaurant_id));
+            $result = $stmt->fetchAll();
+            return $result;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+    }
+
+    /**
      * Update a restaurant.
      */
     function update_restaurant($id, $name, $description, $local) {

@@ -35,13 +35,14 @@ CREATE TABLE reviews (
 CREATE TABLE replies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     message VARCHAR,
-    review_id INTEGER REFERENCES reviews
+    review_id INTEGER REFERENCES reviews,
+    username VARCHAR REFERENCES users
 );
 
 CREATE TABLE images (
-  id INTEGER PRIMARY KEY,
-  title VARCHAR NOT NULL,
-  restaurant_id INTEGER REFERENCES restaurants
+    id INTEGER PRIMARY KEY,
+    title VARCHAR NOT NULL,
+    restaurant_id INTEGER REFERENCES restaurants
 );
 
 /* SHA1 function online generator -> http://www.sha1-online.com */

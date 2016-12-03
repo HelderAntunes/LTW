@@ -6,12 +6,13 @@
     include_once('database/users.php');
     include_once('database/images.php');
     include_once('database/reviews.php');
+    include_once('database/replies.php');
 
     $user = get_user($_SESSION['username']);
-    $restaurant = get_restaurant($_GET['id']);
+    $review = get_review($_GET['id']);
+    $replies = get_replies_of_a_review($_GET['id']);
+    $restaurant = get_restaurant($review['restaurant_id']);
     $images = get_images_of_restaurant($restaurant['id']);
-    $reviews = get_reviews_of_restaurant($restaurant['id']);
-    $owners_username = get_owners_username_of_a_restaurant($restaurant['id']);
 ?>
 
 <!DOCTYPE html>
@@ -41,30 +42,36 @@
                     </article>
                 <?php } ?>
             </section>
-            <section id="owners">
-                <h2>Owners:</h2>
-                <?php foreach ($owners_username as $owner) { ?>
-                    <p><?=$owner['username']?></p>
-                <?php } ?>
-            </section>
-
-            <section id="reviews">
-                <?php if (count($reviews) > 0) { ?>
-                    <h2>Reviews</h2>
-                    <?php foreach ($reviews as $review) { ?>
-                        <a href="<?=$environment?>/see_review.php?id=<?=$review['id']?>">See review</a>
-                    <?php } ?>
-                <?php } ?>
-            </section>
-
-            <?php if (user_is_owner_of_restaurant($_SESSION['username'], $restaurant['id'])) { ?>
-                <a href="<?=$environment?>/edit_restaurant.php?id=<?=$restaurant['id']?>">Edit restaurant</a>
-            <?php } else {?>
-                <a href="<?=$environment?>/add_review.php?id=<?=$restaurant['id']?>">Add review</a>
-            <?php } ?>
         </article>
 
-        <a href="<?=$environment?>/userpage.php?username=<?=$_SESSION['username']?>">Go home</a>
+        <section id="review">
+            <h2>Review of <?=$review['reviewer_username']?></h2>
+            <p>Score: <?=$review['score']?></p>
+            <?php if (strlen(trim($review['comment'])) > 0) { ?>
+                <p>Comment: <?=$review['comment']?></p>
+            <?php } ?>
+        </section>
 
+        <section id="replies">
+            <?php foreach ($replies as $replie) { ?>
+                <article class="replie">
+                    <h3>Replie of <?=$replie['username']?></h3>
+                    <p>Message: <?=$replie['message']?></p>
+                </article>
+            <?php } ?>
+            <?php if (user_is_owner_of_restaurant($_SESSION['username'], $restaurant['id'])) { ?>
+                <form action="action_add_reply.php" method="post">
+                    <label>Message:
+                        <input type="text" value="" name="message" required>
+                    </label>
+                    <input type="hidden" name="review_id" value=<?=$_GET['id']?> >
+                    <input type="hidden" name="username" value=<?=$_SESSION['username']?> >
+                    <input type="submit" value="Reply">
+                </form>
+            <?php } ?>
+
+        </section>
+
+        <a href="<?=$environment?>/userpage.php?username=<?=$_SESSION['username']?>">Go home</a>
     </body>
 </html>
