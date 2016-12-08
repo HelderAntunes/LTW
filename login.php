@@ -8,10 +8,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>FoodBook</title>
         <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Bungee|Indie+Flower" rel="stylesheet">
     </head>
     <body>
-        <h1>FoodBook</h1>
+        <div id="header">
+            <h1>FoodBook</h1>
+        </div>
         <div id="imgchef">
             <img src="images/chef.jpg" alt="Chef">
         </div>
@@ -22,7 +25,11 @@
                 <input type="password" placeholder="Enter Password" name="password" required>
             <button type="submit">Login</button>
         </form>
+     
         <a href="<?php echo $environment; ?>/login.php">Go Home</a>
-        No account?<a href="<?php echo $environment; ?>/register.php">Create one!</a>
+        <div id="registerLink">
+             <a href="<?php echo $environment; ?>/register.php">No account? Create one!</a>
+        </div>
+    
     </body>
 </html>

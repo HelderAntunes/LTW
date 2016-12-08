@@ -8,10 +8,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>FoodBook</title>
         <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     </head>
     <body>
-        <h1>FoodBook</h1>
+        <div id="header">
+            <h1>FoodBook</h1>
+        </div>
         <div id="imgchef">
             <img src="images/chef.jpg" alt="Chef">
         </div>
@@ -24,7 +27,7 @@
             <input type="password" placeholder="Enter Password" name="password" required>
             <label><b>Birthday</b></label>
             <input type="date" name="birthdate">
-            <button type="submit">Create account</button>
+            <button id="register_btn" type="submit">Create account</button>
         </form>
         <?php
             if(isset($_POST['user_exists'])){ ?>

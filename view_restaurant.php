@@ -20,20 +20,37 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>FoodBook</title>
         <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     </head>
     <body>
-        <h1>FoodBook</h1>
+        <div id="header">
+            <h1>FoodBook</h1>
+        </div>
 
-        <h2>Username: <?=$user['username']?></h2>
         <div id="imgchef">
             <img src="images/chef.jpg" alt="Chef">
         </div>
 
+        <div id="user">
+            <div id="user_data">
+            <h2>Personal data</h2>
+            <h3>Username: <?=$user['username']?></h3>
+            <h3>Email: <?=$user['email']?></h3>
+            <h3>Birthdate: <?=$user['birthdate']?></h3>
+            </div>
+
+            <div id="user_links">
+                <a href="">Edit profile</a>
+                <a href="<?=$environment?>/action_logout.php">Log out</a>
+            </div>
+        </div>
+
         <article id="restaurant">
+            <h2>Restaurant data</h2>
             <h3>Name: <?=$restaurant['name']?></h3>
-            <p>Description: <?=$restaurant['description']?></p>
-            <p>Local: <?=$restaurant['local']?></p>
+            <h3>Description: <?=$restaurant['description']?></p>
+            <h3>Local: <?=$restaurant['local']?></p>
             <section id="images">
                 <?php foreach ($images as $image) { ?>
                     <article class="image">

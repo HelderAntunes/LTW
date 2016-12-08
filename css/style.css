@@ -1,0 +1,220 @@
+
+body {
+    background: #232526; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #232526 , #414345); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #232526 , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 50%;
+    margin: auto;
+}
+
+form {
+    background-color: #CCCCCC;
+    margin: auto;
+    position: relative;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #F44;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #999;
+}
+
+input {
+    width: 375px;
+    display: block;
+    border: 1px solid #999;
+    height: 25px;
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+textarea {
+    display: block;
+    border: 1px solid #999;
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+button {
+    width: 100px;
+    right: 20px;
+    bottom: 20px;
+    background: #F44;
+    color: #fff;
+    font-family: Tahoma, Geneva, sans-serif;
+    height: 30px;
+    border-radius: 15px;
+    border: 1p solid #999;
+    display: block;
+    margin-top: 10px;
+}
+
+button:hover {
+  background: #fff;
+  color: #F44;
+}
+
+#search-btn {
+    width: 200px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #F44;
+}
+
+#registerLink {
+    float: right;
+}
+
+#imgchef {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img {
+    width: 25%;
+    border-radius: 50%
+}
+
+/* userpage.php and restaurants_found.php */
+#header {
+    padding: 10px;
+}
+
+#header h1 {
+    text-align: center;
+    font-family: 'Bungee', cursive;
+    font-size: 3em;
+    color: #F44;
+}
+
+#user {
+    background-color: #CCCCCC;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #999;
+    height: 100px;
+}
+
+#user_data {
+    float: left;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-family: cursive;
+}
+
+#user_data h3, #restaurant h3, #restaurants_found h3 {
+    margin-top: 10px;
+}
+
+#user_links {
+    float: right;
+}
+
+#user_links {
+    margin-top: 13px;
+}
+
+#user_links a {
+    padding: 5px 10px;
+    background-color: #F44;
+    color: white;
+    border-radius: 10px;
+    border-radius: 15px;
+    border: 1px solid #999;
+    display: block;
+    margin: 10px 0px;
+    font-family: cursive;
+}
+
+#user_links a:hover {
+    background-color: white;
+    color: #F44;
+}
+
+#my_restaurants a {
+    padding: 5px 10px;
+    background-color: #F44;
+    color: white;
+    border-radius: 10px;
+    display: inline-block;
+    border: 1px solid #999;
+    font-family: cursive;
+    margin-top: 5px;
+}
+
+#my_restaurants a:hover {
+    background-color: white;
+    color: #F44;
+}
+
+#my_restaurants {
+    background-color: #CCCCCC;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #999;
+    clear: both;
+    margin-top: 10px;
+}
+
+#my_restaurants #add_restaurat {
+    margin-top: 20px;
+}
+
+.restaurant {
+    margin-top: 15px;
+}
+
+#search {
+    margin-top: 10px;
+}
+
+#restaurant, #restaurants_found {
+    margin-top: 20px;
+    background-color: #CCCCCC;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #999;
+}
+
+#restaurant a , #restaurants_found a {
+    padding: 5px 10px;
+    background-color: #F44;
+    color: white;
+    border-radius: 10px;
+    display: inline-block;
+    border: 1px solid #999;
+    font-family: cursive;
+    margin-top: 5px;
+}
+
+#restaurant a:hover, #restaurants_found a:hover {
+    background-color: white;
+    color: #F44;
+}
+
+#images {
+    text-align: center;
+}
+
+
+#edit_restaurant_form {
+    margin-top: 10px;
+}
+
+#edit_restaurant_form button, #register_btn {
+    width: 150px;
+}
+
