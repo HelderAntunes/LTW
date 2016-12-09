@@ -51,3 +51,6 @@ INSERT INTO users VALUES ('biscoito', '4d3f90019cd763878ac59bc563f04cfae0be9b68'
 
 INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha', 'Bons almoços e jantares a preços elevados.', 'FEUP-bar das minas');
 INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha2', 'Má comida, mas bom preço.', 'FEUP-cantina');
+
+INSERT INTO owners_restaurants VALUES ('bolacha',1);
+INSERT INTO owners_restaurants VALUES ('bolacha',2);

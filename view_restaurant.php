@@ -41,7 +41,7 @@
             </div>
 
             <div id="user_links">
-                <a href="">Edit profile</a>
+                <a href="<?=$environment?>/edit_profile.php">Edit profile</a>
                 <a href="<?=$environment?>/action_logout.php">Log out</a>
             </div>
         </div>

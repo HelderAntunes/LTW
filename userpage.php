@@ -62,10 +62,10 @@
                     <a href="<?=$environment?>/view_restaurant.php?id=<?=$restaurant['id']?>">View restaurant</a>
                 </article>
             <?php } ?>
-                <a id="add_restaurat" href="<?=$environment?>/add_restaurant.php?username=<?=$user['username']?>">Add restaurant</a>
         <?php } else { ?>
             <h2>You have no restaurant.</h2>
         <?php } ?>
+          <a id="add_restaurat" href="<?=$environment?>/add_restaurant.php?username=<?=$user['username']?>">Add restaurant</a>
         </section>
 
         <form id="search" action="restaurants_found.php" method="get">
