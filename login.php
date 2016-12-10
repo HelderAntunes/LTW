@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once("config/config.php");
 ?>
 
@@ -18,6 +19,13 @@
         <div id="imgchef">
             <img src="images/chef.jpg" alt="Chef">
         </div>
+        <?php if (isset($_SESSION['error'])) { ?>
+            <span id="error">
+                <p><?=$_SESSION['error']?></p>
+            </span>
+
+        <?php unset($_SESSION['error']);
+        }?>
         <form action="action_login.php" method="post">
             <label><b>Username:</b></label>
                 <input type="text" placeholder="Enter Username" name="username" required>
