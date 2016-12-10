@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once("config/config.php");
 ?>
 
@@ -18,6 +19,11 @@
         <div id="imgchef">
             <img src="images/chef.jpg" alt="Chef">
         </div>
+        <?php if (isset($_SESSION['error'])) { ?>
+            <span id="error">
+                <p><?=$_SESSION['error']?></p>
+            </span>
+        <?php unset($_SESSION['error']); }?>
         <form action="action_sigin.php" method="post">
             <label><b>Username:</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
@@ -29,11 +35,7 @@
             <input type="date" name="birthdate">
             <button id="register_btn" type="submit">Create account</button>
         </form>
-        <?php
-            if(isset($_POST['user_exists'])){ ?>
-                <strong>Wrong login data.</strong>
-            <?php }
-        ?>
+        
         <a href="<?php echo $environment; ?>/login.php">Go Home</a>
     </body>
 </html>
