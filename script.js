@@ -1,7 +1,7 @@
 $(loadDocument);
 
 function loadDocument () {
-    $('#buttonsearch').click(function(){
+    $('#searchbtn').click(function(){
         search_restaurants();
     });
 }

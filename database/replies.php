@@ -27,7 +27,7 @@
         try {
             $stmt = $dbh->prepare("INSERT INTO replies (id, message, review_id, username)
                                     VALUES (NULL, :mesage, :review_id, :username)");
-            $stmt->execute(array($name, $review_id, $username));
+            $stmt->execute(array($message, $review_id, $username));
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}

@@ -181,7 +181,7 @@ h2 {
     margin-top: 10px;
 }
 
-#restaurant, #restaurants_found {
+#restaurant, #search , #review {
     margin-top: 20px;
     background-color: #CCCCCC;
     border-radius: 10px;
@@ -218,3 +218,10 @@ h2 {
     width: 150px;
 }
 
+#review {
+    margin-bottom: 15px;
+}
+
+#review h3 {
+    font-size: 1.2em;
+}

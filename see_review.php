@@ -22,6 +22,7 @@
         <title>FoodBook</title>
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     </head>
     <body>
         
@@ -48,8 +49,9 @@
         </div>
 
         <article id="restaurant">
+            <h2>Restaurant data</h2>
             <h3>Name: <?=$restaurant['name']?></h3>
-            <h3>Description: <?=$restaurant['description']?></p>
+            <h3>Description: <?=$restaurant['description']?></h3>
             <h3>Local: <?=$restaurant['local']?></p>
             <section id="images">
                 <?php foreach ($images as $image) { ?>
@@ -61,21 +63,24 @@
         </article>
 
         <section id="review">
-            <h2>Review of <?=$review['reviewer_username']?></h2>
+            <h3>Review of <?=$review['reviewer_username']?></h3>
             <p>Score: <?=$review['score']?></p>
             <?php if (strlen(trim($review['comment'])) > 0) { ?>
-                <p>Comment: <?=$review['comment']?></p>
+            <p>Comment: <?=$review['comment']?></p>
             <?php } ?>
-        </section>
 
-        <section id="replies">
+            <section id="replies">
             <?php foreach ($replies as $replie) { ?>
                 <article class="replie">
                     <h3>Replie of <?=$replie['username']?></h3>
                     <p>Message: <?=$replie['message']?></p>
                 </article>
             <?php } ?>
-            <?php if (user_is_owner_of_restaurant($_SESSION['username'], $restaurant['id'])) { ?>
+            </section>
+
+        </section>
+
+         <?php if (user_is_owner_of_restaurant($_SESSION['username'], $restaurant['id'])) { ?>
                 <form action="action_add_reply.php" method="post">
                     <label>Message:
                         <input type="text" value="" name="message" required>
@@ -85,8 +90,6 @@
                     <input type="submit" value="Reply">
                 </form>
             <?php } ?>
-
-        </section>
 
         <a href="<?=$environment?>/userpage.php?username=<?=$_SESSION['username']?>">Go home</a>
     </body>

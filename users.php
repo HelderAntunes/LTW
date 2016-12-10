@@ -77,36 +77,5 @@
 		}
     }
 
-    /**
-     * Update a user.
-     */
-    function update_user($username, $password, $email, $birthdate) {
-        global $dbh;
-
-        try {
-
-            $stmt = $dbh->prepare("UPDATE users SET password=:password, email=:email, birthdate=:birthdate WHERE username=:username");
-            $stmt->bindParam(':username', $username);
-              $stmt->bindParam(':password', $password);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':birthdate', $birthdate);
-            $stmt->execute();
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
-    }
-
-    function verify_user_info($username, $password, $new_password, $email, $birthdate){
-      $user = get_user($username);
-
-      if($user['password'] == sha1($password)){
-        if($new_password == "")
-          update_user($username,$password,$email,$birthdate);
-        else{
-          $new_password=sha1($password);
-          update_user($username,$new_password,$email,$birthdate);
-        }
-      }
-    }
-
+ 
 ?>
