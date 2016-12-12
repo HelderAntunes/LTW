@@ -51,6 +51,11 @@
             <h3>Name: <?=$restaurant['name']?></h3>
             <h3>Description: <?=$restaurant['description']?></p>
             <h3>Local: <?=$restaurant['local']?></p>
+        <form action="action_remove_restaurant.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="restaurant_id" value=<?=$_GET['id']?>>
+            <input type="hidden" name="owner_username" value=<?=$_GET['username']?>>
+            <input type="submit" value="Remove restaurant">
+        </form>
             <section id="images">
                 <?php foreach ($images as $image) { ?>
                     <article class="image">
