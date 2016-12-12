@@ -70,6 +70,13 @@
                 <?php } ?>
             </section>
 
+        <form action="action_add_ownertorestaurant.php" method="post">
+            <label><b>Username:</b></label>
+            <input type="hidden" name="restaurant_id" value=<?=$_GET['id']?>>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <button id="add_btn" type="submit">ADD Owner</button>
+        </form>
+
             <section id="reviews">
                 <?php if (count($reviews) > 0) { ?>
                     <h2>Reviews</h2>
