@@ -10,7 +10,7 @@
         <input type="text" placeholder="Enter the local of restaurant" name="local" required>
     </label>
     <label>Image:
-        <input type="file" name="image">
+        <input type="file" name="image" accept=".jpg, .jpeg" required>
     </label>
     <input type="submit" value="Add restaurant">
 </form>
