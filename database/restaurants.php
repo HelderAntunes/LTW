@@ -140,16 +140,14 @@
     function remove_restaurant($id) {
         global $dbh;
  
-
         try {
             $stmt = $dbh->prepare('DELETE FROM owners_restaurants WHERE restaurant_id = ?');
             $stmt->execute(array($id));
             $result = $dbh->prepare('DELETE FROM restaurants WHERE id = ?');
             $result->execute(array($id));
-
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
 ?>

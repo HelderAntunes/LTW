@@ -44,13 +44,3 @@ CREATE TABLE images (
     title VARCHAR NOT NULL,
     restaurant_id INTEGER REFERENCES restaurants
 );
-
-/* SHA1 function online generator -> http://www.sha1-online.com */
-INSERT INTO users VALUES ('bolacha', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "bolacha@hotmail.com", "1990-09-02"); /* password = 'bolacha' */
-INSERT INTO users VALUES ('biscoito', '4d3f90019cd763878ac59bc563f04cfae0be9b68', "biscoito@hotmail.com", "1990-09-06"); /* password = 'bolacha' */
-
-INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha', 'Bons almoços e jantares a preços elevados.', 'FEUP-bar das minas');
-INSERT INTO restaurants VALUES (NULL, 'Restaurante do bolacha2', 'Má comida, mas bom preço.', 'FEUP-cantina');
-
-INSERT INTO owners_restaurants VALUES ('bolacha',1);
-INSERT INTO owners_restaurants VALUES ('bolacha',2);

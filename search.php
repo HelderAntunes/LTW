@@ -14,7 +14,7 @@
                 <h3>Name: <?=$restaurant['name']?></h3>
                 <p>Description: <?=$restaurant['description']?></p>
                 <p>Local: <?=$restaurant['local']?></p>
-                <a href="<?=$environment?>/view_restaurant.php?id=<?=$restaurant['id']?>">View restaurant</a>
+                <a href="view_restaurant.php?id=<?=$restaurant['id']?>">View restaurant</a>
             </article>
         <?php } ?>
 <?php } ?>

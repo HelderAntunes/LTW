@@ -14,5 +14,8 @@ function search_restaurants() {
         success: function(response) {
             $('#restaurants_found').html(response);
         }
-    });
+    }); 
+    $('html, body').animate({
+        scrollTop: $("#restaurants_found").offset().top
+    }, 1000);
 }

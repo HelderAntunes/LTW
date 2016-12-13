@@ -4,17 +4,13 @@
      * Return true if exists the pair ($username, $password) in database, false otherwise.
      */
     function username_password_exists($username, $password) {
-        $password =  sha1($password); // hashing
+     
         global $dbh;
         try {
-			$stmt = $dbh->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
-			$stmt->execute(array($username, $password));
+			$stmt = $dbh->prepare('SELECT * FROM users WHERE username = ?');
+			$stmt->execute(array($username));
             $result = $stmt->fetch();
-            if ($result == true) {
-                return true;
-            } else {
-                return false;
-            }
+            return ($result !== false && password_verify($password, $result['password']));
 
 		} catch (PDOException $e) {
 			echo $e->getMessage();
@@ -30,7 +26,7 @@
 			$stmt = $dbh->prepare('SELECT * FROM users WHERE username = ?');
 			$stmt->execute(array($username));
             $result = $stmt->fetch();
-            if ($result != false) {
+            if ($result !== false) {
                 return true;
             } else {
                 return false;
@@ -45,13 +41,16 @@
      * Add a user to database.
      */
     function add_user($username, $password, $email, $birthdate) {
-        $password =  sha1($password); // hashing
+        
         global $dbh;
+        $options = ['cost' => 12];
+        $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+
         try {
             $stmt = $dbh->prepare("INSERT INTO users (username, password, email, birthdate)
                                     VALUES (:username, :password, :email, :birthdate)");
             $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':password', $hash);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':birthdate', $birthdate);
 
@@ -77,17 +76,20 @@
 		}
     }
 
-       /**
+    /**
      * Update a user.
      */
     function update_user($username, $password, $email, $birthdate) {
         global $dbh;
 
+        $options = ['cost' => 12];
+        $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+
         try {
 
             $stmt = $dbh->prepare("UPDATE users SET password=:password, email=:email, birthdate=:birthdate WHERE username=:username");
             $stmt->bindParam(':username', $username);
-              $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':password', $hash);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':birthdate', $birthdate);
             $stmt->execute();
@@ -96,7 +98,7 @@
             }
     }
 
-    function verify_user_info($username, $password, $new_password, $email, $birthdate){
+    /*function verify_user_info($username, $password, $new_password, $email, $birthdate){
         $user = get_user($username);
 
         if($user['password'] == sha1($password)){
@@ -107,6 +109,6 @@
               update_user($username,$new_password,$email,$birthdate);
             }
         }
-    }
+    }*/
 
 ?>

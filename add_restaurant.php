@@ -1,34 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>FoodBook</title>
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <h1>FoodBook</h1>
+<?php
+    session_start();
+    include_once("config/config.php");
+    include_once('database/connection.php');
+    include_once('database/restaurants.php');
+    include_once('database/users.php');
+    include_once('database/images.php');
 
-        <div id="imgchef">
-            <img src="images/chef.jpg" alt="Chef">
-        </div>
-
-        <form action="action_add_restaurant.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="owner_username" value="<?=$_GET['username']?>">
-            <label>Name:
-                <input type="text" placeholder="Enter the name of restaurant" name="name" required>
-            </label>
-            <label>Description:
-                <textarea rows="4" cols="50" name="description" required>Enter description here...</textarea>
-            </label>
-            <label>Local:
-                <input type="text" placeholder="Enter the local of restaurant" name="local" required>
-            </label>
-            <label>Image:
-                <input type="file" name="image">
-            </label>
-            <input type="submit" value="Add restaurant">
-        </form>
-
-    </body>
-</html>
+    include('templates/header.php');
+    include('templates/form_add_restaurant.php');
+    include('templates/go_home_link.php');
+    include('templates/footer.php');
+?>

@@ -43,6 +43,6 @@
     imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
     imagejpeg($medium, $mediumFileName);
 
-    header("Location: userpage.php?username=".$_POST['owner_username']);
+    header("Location: userpage.php");
 
 ?>

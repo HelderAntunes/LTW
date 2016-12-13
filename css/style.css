@@ -104,6 +104,7 @@ img {
     padding: 10px;
     border: 1px solid #999;
     height: 100px;
+    margin-bottom: 10px;
 }
 
 #user_data {
@@ -116,7 +117,7 @@ h2 {
 }
 
 #user_data h3, #restaurant h3, #restaurants_found h3 {
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #user_links {
@@ -166,30 +167,22 @@ h2 {
     padding: 10px;
     border: 1px solid #999;
     clear: both;
-    margin-top: 10px;
-}
-
-#my_restaurants #add_restaurat {
-    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .restaurant {
     margin-top: 15px;
 }
 
-#search {
-    margin-top: 10px;
-}
-
-#restaurant, #search , #review {
-    margin-top: 20px;
+.box_with_border, #search {
     background-color: #CCCCCC;
     border-radius: 10px;
     padding: 10px;
     border: 1px solid #999;
+    margin-bottom: 10px;
 }
 
-#restaurant a , #restaurants_found a {
+.box_with_border a , #restaurants_found a {
     padding: 5px 10px;
     background-color: #F44;
     color: white;
@@ -200,7 +193,7 @@ h2 {
     margin-top: 5px;
 }
 
-#restaurant a:hover, #restaurants_found a:hover {
+.box_with_border a:hover, #restaurants_found a:hover {
     background-color: white;
     color: #F44;
 }
@@ -209,17 +202,12 @@ h2 {
     text-align: center;
 }
 
-
-#edit_restaurant_form {
-    margin-top: 10px;
-}
-
 #edit_restaurant_form button, #register_btn {
     width: 150px;
 }
 
 #review {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 #review h3 {
@@ -228,4 +216,11 @@ h2 {
 
 #error {
     color: red;
+}
+
+footer {
+    background-color: #F44;
+    color: white;
+    padding: 1em 3em;
+    border-radius: 10px;
 }
